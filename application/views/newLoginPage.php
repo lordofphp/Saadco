@@ -7,7 +7,7 @@ $form_open_attributes = array('class' => 'form_group', 'id' => 'login_form');//F
 $captcha_data = array(
 	'word' => rand(12345, 50000),
 	'img_path' => './captcha/',
-	'img_url' => 'https://saadco.co/captcha/',
+	'img_url' => base_url('captcha'),
 	'img_width' => '130',
 	'img_height' => 30,
 	'expiration' => 7200,
@@ -80,7 +80,7 @@ $this->db->query($captcha_insert_query);
 	<style>
 		@font-face {
 			font-family: 'Vazir';
-			src: url('https://saadco.co/Vazir.woff') format('woff');
+			src: url('<?php echo base_url('Vazir.woff') ?>') format('woff');
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -121,7 +121,7 @@ $this->db->query($captcha_insert_query);
 					<span class="label-input100">کد امنیتی </span>
 
 					<span class="label-input100">
-                    <?
+                    <?php
 					echo $captchaOfPage['image']; ?>
                 </span>
 					<input class="input100 -code" type="number" name="captcha">
