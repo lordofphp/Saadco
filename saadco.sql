@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 01, 2020 at 12:55 PM
+-- Generation Time: Mar 01, 2020 at 02:14 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -190,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `financial_baseproductgroup` (
   `sortNumber` int(11) NOT NULL,
   `secondaryProductGroupCount` int(11) DEFAULT '0',
   `productsCount` int(11) DEFAULT '0',
+  `allowedWorkerField` varchar(1000) COLLATE utf8_persian_ci NOT NULL COMMENT 'contains a server worker working field that saved in users_serviceworker',
   PRIMARY KEY (`id`),
   KEY `idx_baseProduct` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
@@ -198,9 +199,9 @@ CREATE TABLE IF NOT EXISTS `financial_baseproductgroup` (
 -- Dumping data for table `financial_baseproductgroup`
 --
 
-INSERT INTO `financial_baseproductgroup` (`id`, `title`, `description`, `sortNumber`, `secondaryProductGroupCount`, `productsCount`) VALUES
-(10, 'test', 'testDesc', 1, 2, 4),
-(11, 'محصولات برقی', 'محصولات برررقی', 1, 0, 0);
+INSERT INTO `financial_baseproductgroup` (`id`, `title`, `description`, `sortNumber`, `secondaryProductGroupCount`, `productsCount`, `allowedWorkerField`) VALUES
+(10, 'test', 'testDesc', 1, 2, 4, ''),
+(11, 'محصولات برقی', 'محصولات برررقی', 1, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -682,6 +683,32 @@ CREATE TABLE IF NOT EXISTS `users_serviceworker` (
   PRIMARY KEY (`id`),
   KEY `fk_userId` (`userId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warranty`
+--
+
+DROP TABLE IF EXISTS `warranty`;
+CREATE TABLE IF NOT EXISTS `warranty` (
+  `product_id` int(11) NOT NULL,
+  `serviceworker_id` int(11) NOT NULL,
+  `warranty_code` varchar(30) COLLATE utf8_persian_ci NOT NULL,
+  `issuance_regdate` bigint(20) NOT NULL,
+  `is_system_user` tinyint(1) NOT NULL,
+  `system_user_id` int(11) NOT NULL,
+  `free_customer_fname` varchar(150) COLLATE utf8_persian_ci NOT NULL,
+  `free_customer_lname` varchar(150) COLLATE utf8_persian_ci NOT NULL,
+  `free_customer_phone` bigint(20) NOT NULL,
+  `free_customer_address` varchar(300) COLLATE utf8_persian_ci NOT NULL,
+  `free_customer_postalcode` bigint(20) NOT NULL,
+  `warranty_picture_fileaddress` text COLLATE utf8_persian_ci NOT NULL,
+  `issuance_expiredate` int(11) NOT NULL,
+  `warranty_status` tinyint(1) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`serviceworker_id`,`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
