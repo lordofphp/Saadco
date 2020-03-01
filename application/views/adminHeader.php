@@ -391,6 +391,8 @@
 					<ul class="treeview-menu">
 						<li><a href="<?php echo site_url('UserController/productsManagement/0/0'); ?>"><i
 									class="fa fa-shopping-cart"></i> مدیریت محصولات</a></li>
+									<li><a href="<?php echo site_url('UserController/warrantyManagement'); ?>"><i
+									class="fa fa-ambulance"></i> مدیریت گارانتی ها</a></li>
 						<li><a href="<?php echo site_url('UserController/productsManagement'); ?>discountsManagement"><i
 									class="fa fa-star"></i> مدیریت تحفیف ها</a></li>
 
