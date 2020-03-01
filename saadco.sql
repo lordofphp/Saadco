@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 01, 2020 at 02:14 PM
+-- Generation Time: Mar 01, 2020 at 02:27 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -697,7 +697,7 @@ CREATE TABLE IF NOT EXISTS `warranty` (
   `warranty_code` varchar(30) COLLATE utf8_persian_ci NOT NULL,
   `issuance_regdate` bigint(20) NOT NULL,
   `is_system_user` tinyint(1) NOT NULL,
-  `system_user_id` int(11) NOT NULL,
+  `system_user_username` varchar(300) COLLATE utf8_persian_ci NOT NULL,
   `free_customer_fname` varchar(150) COLLATE utf8_persian_ci NOT NULL,
   `free_customer_lname` varchar(150) COLLATE utf8_persian_ci NOT NULL,
   `free_customer_phone` bigint(20) NOT NULL,
