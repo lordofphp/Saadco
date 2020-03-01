@@ -340,6 +340,22 @@ class UserController extends MY_Controller
 		$this->load->view('adminFooter');
 
 	}
+	public function warrantyManagement()
+	{
+		if ($this->doesUserLoggedInWithSessionOrCookies())//Az My Controller to folder core
+		{
+			$this->load->model("Warranty_Model");
+			$res = $this->Warranty_Model->getAllWarranty();
+			$data = array(
+				'warrantyAndProductsTitle' => $res,
+				'pageTitle' => 'مدیریت کارت گارانتی ها'
+			);
+			$templateData['pageTitle'] = 'مدیریت کارت های گارنتی';
+			$this->load->view('adminHeader', $templateData);
+			$this->load->view('adminWarrantyManagement', $data);
+			$this->load->view('adminFooter');
+		}
+	}
 
 	//////////////////////////////////////////////////////////
 	/// //////////////////////////////////////////////////////

@@ -34,7 +34,7 @@
 						<tbody>
 						<?php foreach ($warrantyAndProductsTitle as $oneWarrantyCard): ?>
 							<tr>
-								<td><?php echo $oneWarrantyCard['products']['title'] ?></td>
+								<td><?php echo $oneWarrantyCard['title'] ?></td>
 								<td> <?php echo $baseProduct[0]['description'] ?>    </td>
 								<td>
 									<a href="<? echo base_url() . "index.php/UserController/baseProductsGroupManagement2/"
