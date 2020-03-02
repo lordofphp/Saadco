@@ -22,8 +22,7 @@
                             <th>کد گارانتی</th>
                             <th>تاریخ صدور</th>
                             <th>تاریخ انقضا</th>
-                            <th>نام کاربری سایت</th>
-                            <th>نام-نام خانوادگی</th>
+                            <th>حساب کاربری مشتری</th>
                             <th>تصویرکارت</th>
                             <th>وضعیت گارانتی</th>
 
@@ -35,13 +34,55 @@
 						<?php foreach ($warrantyAndProductsTitle as $oneWarrantyCard): ?>
 							<tr>
 								<td><?php echo $oneWarrantyCard['title'] ?></td>
-								<td> <?php echo $baseProduct[0]['description'] ?>    </td>
+								<td> <?php echo $oneWarrantyCard['fname']." ".
+												$oneWarrantyCard['lname']." - ".
+												$oneWarrantyCard['mobile']; ?>    
+												</td>
 								<td>
-									<a href="<? echo base_url() . "index.php/UserController/baseProductsGroupManagement2/"
-										. $baseProduct['id'] ?>">زیردسته ها</a></td>
+										<?php echo $oneWarrantyCard['warranty_code'];?>
+									</td>
+									<td>
+										<?php echo $oneWarrantyCard['issuance_regdate'];?>
+									</td>
+									<td>
+										<?php echo $oneWarrantyCard['issuance_expiredate'];?>
+									</td>
+									<td>
+										<?php 
+										if($oneWarrantyCard['is_system_user'])
+										{
+											 echo '
+											 <a target="_blank" href="'.base_url('UserController/userManagement/'.$oneWarrantyCard['system_user_username']).' ">مشاهده اطلاعات</a>
+											 ';
+										}
+											 else
+											 {
+												echo '
+												<a target="_blank" href="'.base_url('UserController/freeUsers/'.$oneWarrantyCard['free_customer_id']).' "> مشاهده اطلاعات| کاربرآزاد</a>
+												';
+											 }
 
-								<td><a href="" class="btn btn-primary">ویرایش</a></td>
-								<td><a href="" class="btn btn-danger">حذف</a></td>
+										?>
+									</td>
+
+								<td><a target="_blank" href="<?php echo base_url('imFiles/warrantyPicture/'.$oneWarrantyCard['warranty_picture_fileaddress']);?>" class="btn btn-primary">مشاهده</a></td>
+								<td>
+									<?php if($oneWarrantyCard['warranty_status'])
+									{
+										 ?>
+									<button class="btn btn-success">فعال</button>
+									<?php
+									}
+										else
+										{
+											?>
+									<span class="btn btn-danger">منقضی</span>
+										<?php
+										}
+										?>
+							
+								
+								</td>
 							</tr>
 						<?php endforeach; ?>
 						</tbody>

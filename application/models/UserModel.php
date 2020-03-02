@@ -143,6 +143,18 @@ class UserModel extends CI_Model
 
 		return $res;
 	}
+	public function getAllFreeCustomers()
+	{
+		$res = $this->db->get('free_customers')->result_array();
+
+		return $res;
+	}
+	public function getFreeCustomerWithId($id)
+	{
+		$res = $this->db->get_where('free_customers',array('id'=>$id))->result_array();
+		
+		return $res;
+	}
 
 
 }

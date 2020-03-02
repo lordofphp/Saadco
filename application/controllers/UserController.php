@@ -162,7 +162,15 @@ class UserController extends MY_Controller
 			$this->load->view('adminFooter');
 		}
 	}
-
+	public function freeUsers($id)
+	{
+			$this->load->model('UserModel');
+			$templateData['freeCustomers']=$this->UserModel->getFreeCustomerWithId($id);
+	    	$templateData['pageTitle'] = 'کاربران آزاد | صادکو';
+			$this->load->view('adminHeader', $templateData);
+			$this->load->view('freeUserProfile', $templateData);
+			$this->load->view('adminFooter');
+	}
 	public function addProductForm($secondaryProductGroupId, $baseProductGroupId)
 	{
 
@@ -346,6 +354,8 @@ class UserController extends MY_Controller
 		{
 			$this->load->model("Warranty_Model");
 			$res = $this->Warranty_Model->getAllWarranty();
+			//var_dump($res);
+			//exit();
 			$data = array(
 				'warrantyAndProductsTitle' => $res,
 				'pageTitle' => 'مدیریت کارت گارانتی ها'
