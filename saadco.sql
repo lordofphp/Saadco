@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 01, 2020 at 02:27 PM
+-- Generation Time: Mar 02, 2020 at 02:13 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -36,43 +36,16 @@ CREATE TABLE IF NOT EXISTS `captcha` (
   `word` varchar(20) COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=MyISAM AUTO_INCREMENT=1812 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1819 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 --
 -- Dumping data for table `captcha`
 --
 
 INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUES
-(1811, 1583050506, '::1', '41339'),
-(1782, 1583049256, '::1', '34123'),
-(1783, 1583049371, '::1', '39659'),
-(1784, 1583049376, '::1', '42970'),
-(1785, 1583049433, '::1', '42337'),
-(1786, 1583049509, '::1', '26541'),
-(1787, 1583049513, '::1', '16590'),
-(1788, 1583049529, '::1', '32503'),
-(1789, 1583049532, '::1', '42137'),
-(1790, 1583049544, '::1', '37522'),
-(1791, 1583049545, '::1', '26333'),
-(1792, 1583049550, '::1', '43728'),
-(1793, 1583049625, '::1', '29546'),
-(1794, 1583049640, '::1', '48094'),
-(1795, 1583049902, '::1', '18341'),
-(1796, 1583049907, '::1', '21273'),
-(1797, 1583049948, '::1', '49147'),
-(1798, 1583049949, '::1', '38066'),
-(1799, 1583049970, '::1', '38852'),
-(1800, 1583049972, '::1', '45283'),
-(1801, 1583049975, '::1', '34483'),
-(1802, 1583050008, '::1', '41762'),
-(1803, 1583050011, '::1', '32382'),
-(1804, 1583050020, '::1', '32084'),
-(1805, 1583050022, '::1', '31042'),
-(1806, 1583050025, '::1', '38733'),
-(1807, 1583050179, '::1', '48546'),
-(1808, 1583050198, '::1', '20539'),
-(1809, 1583050225, '::1', '26965'),
-(1810, 1583050488, '::1', '28220');
+(1818, 1583136036, '::1', '43509'),
+(1817, 1583134341, '::1', '23194'),
+(1816, 1583134317, '::1', '23053');
 
 -- --------------------------------------------------------
 
@@ -311,6 +284,30 @@ where id=old.baseProductGroupId;
 END
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `free_customers`
+--
+
+DROP TABLE IF EXISTS `free_customers`;
+CREATE TABLE IF NOT EXISTS `free_customers` (
+  `fname` varchar(300) COLLATE utf8_persian_ci NOT NULL,
+  `lname` varchar(300) COLLATE utf8_persian_ci NOT NULL,
+  `phone` bigint(20) NOT NULL,
+  `address` varchar(300) COLLATE utf8_persian_ci NOT NULL,
+  `postalcode` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `free_customers`
+--
+
+INSERT INTO `free_customers` (`fname`, `lname`, `phone`, `address`, `postalcode`, `id`) VALUES
+('احد', 'محمدحسنی', 911125345, 'ساری ', 1534685, 1);
 
 -- --------------------------------------------------------
 
@@ -682,7 +679,14 @@ CREATE TABLE IF NOT EXISTS `users_serviceworker` (
   `dateOfEndCooperation` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_userId` (`userId`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `users_serviceworker`
+--
+
+INSERT INTO `users_serviceworker` (`id`, `userId`, `workingField`, `dateOfStartCooperation`, `dateOfEndCooperation`) VALUES
+(11, 3, 'Cabinet', 124123213, 123123123);
 
 -- --------------------------------------------------------
 
@@ -696,19 +700,22 @@ CREATE TABLE IF NOT EXISTS `warranty` (
   `serviceworker_id` int(11) NOT NULL,
   `warranty_code` varchar(30) COLLATE utf8_persian_ci NOT NULL,
   `issuance_regdate` bigint(20) NOT NULL,
+  `issuance_expiredate` int(11) NOT NULL,
   `is_system_user` tinyint(1) NOT NULL,
   `system_user_username` varchar(300) COLLATE utf8_persian_ci NOT NULL,
-  `free_customer_fname` varchar(150) COLLATE utf8_persian_ci NOT NULL,
-  `free_customer_lname` varchar(150) COLLATE utf8_persian_ci NOT NULL,
-  `free_customer_phone` bigint(20) NOT NULL,
-  `free_customer_address` varchar(300) COLLATE utf8_persian_ci NOT NULL,
-  `free_customer_postalcode` bigint(20) NOT NULL,
+  `free_customer_id` varchar(150) COLLATE utf8_persian_ci NOT NULL COMMENT 'if customer isn''t our app user',
   `warranty_picture_fileaddress` text COLLATE utf8_persian_ci NOT NULL,
-  `issuance_expiredate` int(11) NOT NULL,
   `warranty_status` tinyint(1) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`serviceworker_id`,`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `warranty`
+--
+
+INSERT INTO `warranty` (`product_id`, `serviceworker_id`, `warranty_code`, `issuance_regdate`, `issuance_expiredate`, `is_system_user`, `system_user_username`, `free_customer_id`, `warranty_picture_fileaddress`, `warranty_status`, `id`) VALUES
+(6, 11, 'SaadCo-981201010601', 1234213123, 213213213, 0, '', '1', '1.jpg', 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
