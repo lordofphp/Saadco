@@ -6,7 +6,7 @@ function showImageSecure()
 //$fileAddress=$this->encryption->decrypt();//av = address file value
 //$this is wrong because this is helper we should make instance of object with  $CI =& get_instance();
 $CI =& get_instance();
-$CI->load->library(array('encryption'));
+$CI->load->library(array('encryption'));//sd
 $fileAddress=$CI->encryption->decrypt(
     '123'
 );//av = address file value
