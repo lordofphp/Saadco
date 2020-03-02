@@ -366,7 +366,12 @@ class UserController extends MY_Controller
 			$this->load->view('adminFooter');
 		}
 	}
-
+	public function showImage()
+	{ //mamoolan az view ha besh arg midim
+		$this->load->helper('showImageSecure_helper');
+		//$this->showImageSecure_helper->showImageSecure(); eshtebahe helper dastane loadesh fargh dare
+		showImageSecure();
+	}
 	//////////////////////////////////////////////////////////
 	/// //////////////////////////////////////////////////////
 	/// /////////////////////////////////////////////////////////

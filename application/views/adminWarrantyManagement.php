@@ -64,8 +64,16 @@
 
 										?>
 									</td>
+								<td>
 
-								<td><a target="_blank" href="<?php echo base_url('imFiles/warrantyPicture/'.$oneWarrantyCard['warranty_picture_fileaddress']);?>" class="btn btn-primary">مشاهده</a></td>
+								<?php echo form_open('UserController/showImage/');
+								echo form_hidden('av',$oneWarrantyCard['warranty_picture_fileaddress'] );//av=addressvalue
+								?>
+								<a target="_blank" href="<?php echo base_url('UserController/showImage/'); //that address has been encrtpted?>" 
+								class="btn btn-primary">مشاهده</a>
+								<?php echo form_close();?>
+								</td>
+							
 								<td>
 									<?php if($oneWarrantyCard['warranty_status'])
 									{

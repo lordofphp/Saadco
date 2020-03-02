@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'Jdf');//jdf is persian date time time eng zakhire bad tabdil be shamsi
+$autoload['libraries'] = array('database', 'session', 'Jdf','encryption');//jdf is persian date time time eng zakhire bad tabdil be shamsi
 
 /*
 | -------------------------------------------------------------------
