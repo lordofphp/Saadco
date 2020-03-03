@@ -366,11 +366,29 @@ class UserController extends MY_Controller
 			$this->load->view('adminFooter');
 		}
 	}
+	public function addWarrantyForm()
+	{
+		if ($this->doesUserLoggedInWithSessionOrCookies())//Az My Controller to folder core
+		{
+			//$res = $this->Warranty_Model->getAllWarranty();
+			$data = array(
+				//'warrantyAndProductsTitle' => $res,
+				'pageTitle' => 'صدور گارانتی جدید'
+			);
+			$templateData['pageTitle'] = 'صدور گارانتی جدید';
+			$this->load->view('adminHeader', $templateData);
+			$this->load->view('adminWarrantyAdd', $data);
+			$this->load->view('adminFooter');
+		}
+	}
 	public function showImage()
 	{ //mamoolan az view ha besh arg midim
+		if ($this->doesUserLoggedInWithSessionOrCookies())//Az My Controller to folder core
+		{
 		$this->load->helper('showImageSecure_helper');
 		//$this->showImageSecure_helper->showImageSecure(); eshtebahe helper dastane loadesh fargh dare
 		showImageSecure();
+		}
 	}
 	//////////////////////////////////////////////////////////
 	/// //////////////////////////////////////////////////////

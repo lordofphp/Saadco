@@ -7,10 +7,9 @@
 					<h3 class="box-title">مدیریت کارت گارنتی های صادرشده</h3>
 				</div>
 
-				<!--<a href="<?php //echo base_url() . "index.php/UserController/baseProductGroupForm" ?>"
+				<a href="<?php echo base_url() . "index.php/UserController/addWarrantyForm" ?>"
 				   class="btn btn-success"
-                   style="margin-left:50px;float: left">افزودن دسته جدید</a>
-                     -->
+                   style="margin-left:50px;float: left">صدور گارانتی جدید</a>
 
 				<!-- /.box-header -->
 				<div class="box-body">
