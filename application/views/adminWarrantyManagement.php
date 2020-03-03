@@ -7,7 +7,7 @@
 					<h3 class="box-title">مدیریت کارت گارنتی های صادرشده</h3>
 				</div>
 
-				<!--<a href="<?php echo base_url() . "index.php/UserController/baseProductGroupForm" ?>"
+				<!--<a href="<?php //echo base_url() . "index.php/UserController/baseProductGroupForm" ?>"
 				   class="btn btn-success"
                    style="margin-left:50px;float: left">افزودن دسته جدید</a>
                      -->
@@ -31,6 +31,7 @@
 						</tr>
 						</thead>
 						<tbody>
+						<?php echo form_open('UserController/showImage/',array('target'=>'_blank'));?>
 						<?php foreach ($warrantyAndProductsTitle as $oneWarrantyCard): ?>
 							<tr>
 								<td><?php echo $oneWarrantyCard['title'] ?></td>
@@ -66,19 +67,18 @@
 									</td>
 								<td>
 
-								<?php echo form_open('UserController/showImage/');
-								echo form_hidden('av',$oneWarrantyCard['warranty_picture_fileaddress'] );//av=addressvalue
+								
+								<?php echo form_hidden('av',$oneWarrantyCard['warranty_picture_fileaddress'] );//av=addressvalue
 								?>
-								<a target="_blank" href="<?php echo base_url('UserController/showImage/'); //that address has been encrtpted?>" 
+								<button target="_blank" 
 								class="btn btn-primary">مشاهده</a>
-								<?php echo form_close();?>
 								</td>
 							
 								<td>
 									<?php if($oneWarrantyCard['warranty_status'])
 									{
 										 ?>
-									<button class="btn btn-success">فعال</button>
+									<span class="btn btn-success">فعال</button>
 									<?php
 									}
 										else
@@ -93,6 +93,7 @@
 								</td>
 							</tr>
 						<?php endforeach; ?>
+
 						</tbody>
 						<tfoot>
 						<tr>
@@ -103,6 +104,8 @@
 							<th>امتیاز</th>
 						</tr>
 						</tfoot>
+						<?php echo form_close();?>
+
 					</table>
 				</div>
 				<!-- /.box-body -->
