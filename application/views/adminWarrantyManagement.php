@@ -31,7 +31,7 @@
 						</tr>
 						</thead>
 						<tbody>
-						<?php echo form_open('UserController/showImage/',array('target'=>'_blank'));?>
+						<?php echo form_open('UserController/showImage/');?>
 						<?php foreach ($warrantyAndProductsTitle as $oneWarrantyCard): ?>
 							<tr>
 								<td><?php echo $oneWarrantyCard['title'] ?></td>
@@ -70,7 +70,7 @@
 								
 								<?php echo form_hidden('av',$oneWarrantyCard['warranty_picture_fileaddress'] );//av=addressvalue
 								?>
-								<button target="_blank" 
+								<button 
 								class="btn btn-primary">مشاهده</a>
 								</td>
 							

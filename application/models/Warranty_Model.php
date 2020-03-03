@@ -77,7 +77,7 @@ class Warranty_Model extends CI_Model
 		SELECT users.fname,users.lname,users.username,users.mobile,warranty.* FROM users,warranty,users_serviceworker where warranty.serviceworker_id=11 AND users.id=3
 
 		*/
-		$query="SELECT financial_product.title,free_customers.fname,free_customers.lname,free_customers.id,users.fname,users.lname,users.username,users.mobile,warranty.* FROM financial_product,users,warranty,free_customers,users_serviceworker where warranty.serviceworker_id=users_serviceworker.id AND users.id=users_serviceworker.userId";
+		$query="SELECT financial_product.title,free_customers.fname,free_customers.lname,free_customers.id,users.fname,users.lname,users.username,users.mobile,warranty.* FROM financial_product,users,warranty,free_customers,users_serviceworker where (warranty.serviceworker_id=users_serviceworker.id AND users.id=users_serviceworker.userId ) AND warranty.product_id=financial_product.id";
 		$query=$this->db->query($query);
 
 		return $query->result_array();
